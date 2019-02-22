@@ -11,7 +11,7 @@
 .OUTPUTS
   None
 .NOTES
-  Version:        1.0
+  Version:        1.1
   Author:         TDarkShadow
   Creation Date:  2019-02-22
   Purpose/Change: Initial script development
@@ -41,10 +41,10 @@ Function Add-PS1-ToNewContextMenu {
     $registryPath = "Registry::" + $registryPath
       If(!(Test-Path $registryPath)) {
 		New-Item -Path $registryPath -Force | Out-Null
-		Get-Item -Path $registryPath | New-ItemProperty -Name $name `
+		New-ItemProperty -Path $registryPath -Name $name -Value $value `
 			-PropertyType String -Force | Out-Null
 	} Else {
-		Get-Item -Path $registryPath | New-ItemProperty -Name $name `
+		New-ItemProperty -Path $registryPath -Name $name -Value $value `
 			-PropertyType String -Force | Out-Null
 	}
     }
